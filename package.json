@@ -3,9 +3,9 @@
   "name": "api-rede-social-beyond",
   "version": "1.0.0",
   "description": "api rede social beyond",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "start:dev": "node src/app.js",
+    "start:dev": "nodemon src/server.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "precommit": "lint-staged"
@@ -45,6 +45,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
+    "nodemon": "^3.0.1",
     "prettier": "^3.1.0"
   }
 }
