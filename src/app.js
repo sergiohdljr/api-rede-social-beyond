@@ -9,4 +9,4 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-export default { app };
+export default app;
