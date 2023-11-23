@@ -9,4 +9,4 @@ class Post {
   }
 }
 
-export default Post;
+module.exports = Post;

@@ -1,4 +1,4 @@
-import db from "../db/firestore.js";
+const db = require("../db/firestore.js");
 
 class PostRepository {
   #firestore;
@@ -21,4 +21,4 @@ class PostRepository {
     }
   }
 }
-export default PostRepository;
+module.exports = PostRepository;

@@ -1,5 +1,5 @@
-import * as admin from "firebase-admin";
-import * as serviceAccount from "./projeto-beyond-8c339-firebase-adminsdk-drpgc-ed3497b204.json";
+const admin = require("firebase-admin");
+const serviceAccount = require("./projeto-beyond-8c339-firebase-adminsdk-drpgc-ed3497b204.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -7,4 +7,4 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-export default db;
+module.exports = db;
