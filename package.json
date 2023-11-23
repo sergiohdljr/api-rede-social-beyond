@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "precommit": "lint-staged",
-    "test": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests",
+    "test:coverage": "jest --coverage"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
