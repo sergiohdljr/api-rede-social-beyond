@@ -31,8 +31,21 @@ class PostService {
     }
   }
 
-  
+  async deletePost(id) {
+    try {
+      await this.repository.delete(id);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 
+  async updatePost(id, texto) {
+    try {
+      await this.repository.update(id, texto);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 }
 
 module.exports = PostService;
