@@ -31,9 +31,8 @@ class PostRepository {
   }
 
   async createPost(post) {
-    const postRef = this.firestore.collection("posts").doc(post.id);
     try {
-      await postRef.create(post);
+      await this.firestore.collection("posts").doc(post.id).create(post);
     } catch (error) {
       throw new Error(error.message);
     }
