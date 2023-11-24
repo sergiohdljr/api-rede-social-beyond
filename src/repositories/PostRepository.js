@@ -1,8 +1,6 @@
 const db = require("../db/firestore.js");
 
 class PostRepository {
-  #firestore;
-
   constructor() {
     this.firestore = db;
   }
