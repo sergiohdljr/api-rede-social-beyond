@@ -24,12 +24,12 @@ describe("Post Repository Class", () => {
   });
 
   test("deve recuperar todos os posts", async () => {
-    const allPosts = await postRepository.getAllPosts();
+    const allPosts = await postRepository.find();
     expect(allPosts).toEqual([{ post: "data" }]);
   });
 
   test("should throw an error when getAllPosts fails", async () => {
     postRepository.firestore = mockFireStoreDatabaseError;
-    await expect(postRepository.getAllPosts()).rejects.toThrow("Erro ao receber os posts");
+    await expect(postRepository.find()).rejects.toThrow("Erro ao receber os posts");
   });
 });
