@@ -21,6 +21,18 @@ class PostService {
       throw new Error(error.message);
     }
   }
+
+  async findPostById(id) {
+    try {
+      const post = await this.repository.findById(id);
+      return post;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
+  
+
 }
 
 module.exports = PostService;
