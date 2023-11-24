@@ -7,7 +7,7 @@ class PostRepository {
     this.firestore = db;
   }
 
-  async getAllPosts() {
+  async find() {
     try {
       const allPosts = await this.firestore.collection("posts").get();
       const posts = [];
@@ -30,7 +30,7 @@ class PostRepository {
     }
   }
 
-  async createPost(post) {
+  async create(post) {
     try {
       await this.firestore.collection("posts").doc(post.id).create(post);
     } catch (error) {
@@ -38,7 +38,7 @@ class PostRepository {
     }
   }
 
-  async deletePost(id) {
+  async delete(id) {
     try {
       await this.firestore.collection("posts").doc(id).delete();
     } catch (error) {
@@ -46,7 +46,7 @@ class PostRepository {
     }
   }
 
-  async edit(id, texto) {
+  async update(id, texto) {
     try {
       await this.firestore.collection("posts").doc(id).update({ texto });
     } catch (error) {
