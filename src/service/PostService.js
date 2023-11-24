@@ -12,6 +12,15 @@ class PostService {
       throw new Error(error.message);
     }
   }
+
+  async find() {
+    try {
+      const posts = await this.repository.find();
+      return posts;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 }
 
 module.exports = PostService;
