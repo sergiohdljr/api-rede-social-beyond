@@ -13,7 +13,7 @@ class PostService {
     }
   }
 
-  async find() {
+  async findPost() {
     try {
       const posts = await this.repository.find();
       return posts;
