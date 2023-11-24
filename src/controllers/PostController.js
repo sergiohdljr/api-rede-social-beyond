@@ -9,7 +9,7 @@ route.get("/posts", async (req, res) => {
     const posts = await service.findPost();
     return res.json(posts);
   } catch (error) {
-    res.status(500).json({ error: true, message: error.message });
+    return res.status(500).json({ error: true, message: error.message });
   }
 });
 
