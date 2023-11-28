@@ -19,8 +19,7 @@ route.post("/post", async (req, res) => {
     if (!post || !post.id) {
       throw new Error("body não foi definido.");
     }
-
-    await service.createPost(post.id);
+    await service.createPost(post);
     res.status(201).json({ message: "Post criado com sucesso!" });
   } catch (error) {
     res.status(400).json({ error: true, message: `Erro na criação do post: ${error.message}` });
