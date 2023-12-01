@@ -44,9 +44,11 @@ class PostRepository {
     }
   }
 
-  async update(id, texto) {
+  async update(id, texto, foto) {
     try {
-      await this.firestore.collection("posts").doc(id).update({ texto });
+      if (texto && !foto) await this.firestore.collection("posts").doc(id).update({ texto });
+      if (!texto && foto) await this.firestore.collection("posts").doc(id).update({ foto });
+      if (texto && foto) await this.firestore.collection("posts").doc(id).update({ texto, foto });
     } catch (error) {
       throw new Error(error.message);
     }

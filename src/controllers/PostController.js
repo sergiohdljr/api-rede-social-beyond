@@ -39,10 +39,10 @@ route.delete("/post-delete/:id", async (req, res) => {
 
 route.put("/post-update/:id", async (req, res) => {
   const { id } = req.params;
-  const { texto } = req.body;
+  const { texto, foto } = req.body;
 
   try {
-    await service.updatePost(id, texto);
+    await service.updatePost(id, texto, foto);
     res.status(204).json({ message: `Post com id ${id} atualizado com sucesso!` });
   } catch (error) {
     res.status(500).json({ error: true, message: error.message });

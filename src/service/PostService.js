@@ -39,9 +39,9 @@ class PostService {
     }
   }
 
-  async updatePost(id, texto) {
+  async updatePost(id, texto, foto) {
     try {
-      await this.repository.update(id, texto);
+      await this.repository.update(id, texto, foto);
     } catch (error) {
       throw new Error(error.message);
     }
