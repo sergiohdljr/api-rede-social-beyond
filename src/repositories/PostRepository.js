@@ -1,4 +1,3 @@
-const { use } = require("../controllers/PostController.js");
 const db = require("../db/firestore.js");
 
 class PostRepository {
