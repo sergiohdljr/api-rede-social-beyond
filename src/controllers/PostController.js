@@ -63,4 +63,33 @@ route.put("/post/like/:id", async (req, res) => {
   }
 });
 
+route.put("/post/comment/:id", async (req, res) => {
+  const { id } = req.params;
+  const { textoComentario, user } = req.body;
+  const payload = {
+    postId: id,
+    textoComentario,
+    user,
+  };
+  try {
+    await service.coment(payload);
+    res.status(200).json({ message: "comentario publicado" });
+  } catch (error) {
+    throw new Error(`error:${error}`);
+  }
+});
+
+route.delete("/post/comment-delete/:id", async (req, res) => {
+  const { postId } = req.body;
+  const { id } = req.params;
+  const payload = { postId, commentId: id };
+
+  try {
+    await service.deleteComment(payload);
+    res.status(200).json({ message: "comentario deletado" });
+  } catch (error) {
+    throw new Error(`error: ${error}`);
+  }
+});
+
 module.exports = route;

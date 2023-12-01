@@ -54,6 +54,22 @@ class PostService {
       throw new Error(`error:${error}`);
     }
   }
+
+  async coment(payload) {
+    try {
+      await this.repository.createComment(payload);
+    } catch (error) {
+      throw new Error(`error:${error}`);
+    }
+  }
+
+  async deleteComment(payload) {
+    try {
+      await this.repository.deleteComment(payload);
+    } catch (error) {
+      throw new Error(`error: ${error}`);
+    }
+  }
 }
 
 module.exports = PostService;
