@@ -49,4 +49,18 @@ route.put("/post-update/:id", async (req, res) => {
   }
 });
 
+route.put("/post/like/:id", async (req, res) => {
+  const { id } = req.params;
+  const { userId } = req.body;
+
+  const payload = { id, userId };
+
+  try {
+    await service.like(payload);
+    res.status(200).json({ message: `liked` });
+  } catch (error) {
+    throw new Error(`error:${error}`);
+  }
+});
+
 module.exports = route;

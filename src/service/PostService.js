@@ -46,6 +46,14 @@ class PostService {
       throw new Error(error.message);
     }
   }
+
+  async like(payload) {
+    try {
+      await this.repository.likePost(payload);
+    } catch (error) {
+      throw new Error(`error:${error}`);
+    }
+  }
 }
 
 module.exports = PostService;

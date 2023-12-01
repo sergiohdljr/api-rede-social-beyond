@@ -1,3 +1,4 @@
+const { use } = require("../controllers/PostController.js");
 const db = require("../db/firestore.js");
 
 class PostRepository {
@@ -29,12 +30,39 @@ class PostRepository {
   }
 
   async create(payload) {
-    const post = { ...payload, likes: 0, coments: [] };
+    const post = { ...payload, likes: 0, likedBy: [], coments: [] };
 
     try {
       await this.firestore.collection("posts").doc(post.id).create(post);
     } catch (error) {
       throw new Error(error.message);
+    }
+  }
+
+  async likePost({ userId, id }) {
+    try {
+      const postRef = this.firestore.collection("posts").doc(id);
+      const postDoc = await postRef.get();
+      const userList = postDoc.data().likedBy;
+      const currentLikes = postDoc.data().likes;
+      const newLikes = currentLikes + 1;
+      const usersListAtt = [...userList, userId];
+      const deslike = currentLikes - 1;
+      const removeUserList = userList.filter((likedById) => likedById !== userId);
+
+      if (!userList.includes(userId)) {
+        await this.firestore.collection("posts").doc(id).update({
+          likes: newLikes,
+          likedBy: usersListAtt,
+        });
+        return;
+      }
+      await this.firestore.collection("posts").doc(id).update({
+        likes: deslike,
+        likedBy: removeUserList,
+      });
+    } catch (error) {
+      throw new Error(`error: ${error}`);
     }
   }
 
