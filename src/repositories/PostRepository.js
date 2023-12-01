@@ -28,7 +28,9 @@ class PostRepository {
     }
   }
 
-  async create(post) {
+  async create(payload) {
+    const post = { ...payload, likes: 0, coments: [] };
+
     try {
       await this.firestore.collection("posts").doc(post.id).create(post);
     } catch (error) {
