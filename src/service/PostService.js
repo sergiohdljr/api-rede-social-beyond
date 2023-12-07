@@ -70,6 +70,14 @@ class PostService {
       throw new Error(`error: ${error}`);
     }
   }
+
+  async sharePost(payload) {
+    try {
+      await this.repository.share(payload);
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }
 
 module.exports = PostService;

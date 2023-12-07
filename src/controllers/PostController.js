@@ -92,4 +92,16 @@ route.delete("/post/comment-delete/:id", async (req, res) => {
   }
 });
 
+route.post("/post/share/:userId", async (req, res) => {
+  const { userId } = req.params;
+  const post = req.body;
+
+  try {
+    await service.sharePost({ ...post, sharedBy: userId });
+    res.status(201).json({ message: "post compartilhado com sucesso" });
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
 module.exports = route;

@@ -115,6 +115,17 @@ class PostRepository {
       throw new Error(error.message);
     }
   }
+
+  async share(payload) {
+    const post = { ...payload };
+    post.id = "jbsjknbdjsndjsnjsn";
+
+    try {
+      await this.create(post);
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }
 
 module.exports = PostRepository;
