@@ -118,7 +118,6 @@ class PostRepository {
 
   async share(payload) {
     const post = { ...payload };
-    post.id = "jbsjknbdjsndjsnjsn";
 
     try {
       await this.create(post);
