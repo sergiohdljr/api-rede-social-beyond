@@ -41,4 +41,10 @@ que consiste no desenvolvimento incremental e deploy de uma aplicação full-sta
   npm run start:dev
 ```
 
-o servidor agora vai estar rodando na porta `http://localhost:3000`
+o servidor agora vai estar rodando na porta `http://localhost:8080`
+
+### Documentação Swagger 
+
+para acessar a Documentação do swagger acesse `http://localhost:8080/api-docs`
+
+![Captura de tela de 2023-12-11 12-45-24](https://github.com/sergiohdljr/byConnect-api/assets/102623806/9633f753-ec10-46e6-81d8-3ae326b5e11c)
