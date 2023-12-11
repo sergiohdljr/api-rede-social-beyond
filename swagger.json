@@ -1,0 +1,294 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "byConnect API",
+    "description": "Documentação API da byConnect um projeto da Residência de Software do Porto Digital, com a Empresa Beyond CO. que consiste no desenvolvimento incremental e deploy de uma aplicação full-stack de uma rede socia",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "tag": {
+      "name": "pet",
+      "description": "Pets operations"
+    },
+    "/posts": {
+      "get": {
+        "description": "Retrieve all posts",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Post"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/post": {
+      "post": {
+        "description": "Create a new post",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Post created successfully"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/post-delete/{id}": {
+      "delete": {
+        "description": "Delete a post by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Post deleted successfully"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/post-update/{id}": {
+      "put": {
+        "description": "Update a post by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdatePost"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/post/like/{id}": {
+      "put": {
+        "description": "Add a like to a post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Like"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Like added successfully"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/post/comment/{id}": {
+      "put": {
+        "description": "Add a comment to a post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Comment"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Comment posted successfully"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/post/comment-delete/{id}": {
+      "delete": {
+        "description": "Delete a comment on a post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteComment"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Comment deleted successfully"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/post/share/{userId}": {
+      "post": {
+        "description": "Share a post on a user's timeline",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SharedPost"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Post shared successfully"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Post": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "texto": {
+          "type": "string"
+        },
+        "foto": {
+          "type": "string"
+        }
+      }
+    },
+    "UpdatePost": {
+      "type": "object",
+      "properties": {
+        "texto": {
+          "type": "string"
+        },
+        "foto": {
+          "type": "string"
+        }
+      }
+    },
+    "Like": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "Comment": {
+      "type": "object",
+      "properties": {
+        "textoComentario": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        }
+      }
+    },
+    "DeleteComment": {
+      "type": "object",
+      "properties": {
+        "postId": {
+          "type": "string"
+        }
+      }
+    },
+    "SharedPost": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Post"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "sharedBy": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
