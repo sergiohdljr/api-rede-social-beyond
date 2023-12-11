@@ -18,6 +18,8 @@ que consiste no desenvolvimento incremental e deploy de uma aplicação full-sta
 ![NodeJS](https://img.shields.io/badge/-NodeJS-black?logo=node.js&style=social)&nbsp;&nbsp;
 ![Express](https://img.shields.io/badge/-Express-black?logo=express&style=social)
 ![Firebase](https://img.shields.io/badge/-firebase-black?logo=Firebase&style=social)&nbsp;&nbsp;
+![Docker](https://img.shields.io/badge/-docker-black?logo=docker&style=social)
+![GCP](https://img.shields.io/badge/-Google_Cloud-black?logo=googleCloud&style=social)
 
 
 ## Como rodar o projeto na sua máquina
